@@ -1,6 +1,11 @@
 <%= link_to "Trades", trades_path %>
 <div>
 <h2> Portfolio </h2>
+<% @stocks.each do |ticker,quantity| %>
+<ul>
+  <li>   <%= ticker %>  -  <%= quantity %> Shares </li> 
+</ul>
+<% end %>
 
 </div>
 

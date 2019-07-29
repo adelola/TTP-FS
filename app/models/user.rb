@@ -8,8 +8,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
 
-  def self.stocks_in_possession
-    current_user.stocks.distinct.pluck(:ticker_symbol)
+  def owned_stocks
+    self.trades.joins(:stock).group(:ticker_symbol).sum(:quantity)
   end
   
 end
