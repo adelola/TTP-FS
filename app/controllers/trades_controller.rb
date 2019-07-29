@@ -5,7 +5,6 @@ class TradesController < ApplicationController
     
     
     def create
-      
         @stock = Stock.find_or_create_by(ticker_symbol: params[:stock][:ticker_symbol])
         @purchase_price = 15
         @trade = current_user.trades.create(quantity: params[:trade][:quantity], stock_id: @stock.id, purchase_price: @purchase_price)
