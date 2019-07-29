@@ -1,13 +1,22 @@
-<h1>Dashboard Show</h1>
+<%= link_to "Trades", trades_path %>
+<div>
+<h2> Portfolio </h2>
 
-<%= form_for @trade do |f| %>
-    
-    <%= fields_for :stock, @trade.stock do |ff| %>
-        <%= ff.label :ticker_symbol %>
-        <%= ff.text_field :ticker_symbol, placeholder: "Ticker", required: true %><br>
-    <%end%>
-    
-    <%= f.label :quantity %>
-    <%= f.text_field :quantity, placeholder: "Quantity", required: true %><br>
-    <%= f.submit "Purchase" %>
-<% end %>
+</div>
+
+<div>
+    <h2>Cash - $5000</h2>
+
+    <%= form_for @trade do |f| %>
+        
+        <%= fields_for :stock, @trade.stock do |ff| %>
+            <%= ff.label :ticker_symbol %>
+            <%= ff.text_field :ticker_symbol, placeholder: "Ticker", required: true %><br>
+        <%end%>
+        
+        <%= f.label :quantity %>
+        <%= f.text_field :quantity, placeholder: "Quantity", required: true %><br>
+        <%= f.submit "Purchase" %>
+    <% end %>
+<div>
+

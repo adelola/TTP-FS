@@ -1,0 +1,8 @@
+<%= link_to "Portfolio", root_path %>
+
+<h1> Transactions </h1>
+<% @trades.each do |t| %>
+<ul>
+  <li> BUY ( <%= t.stock.ticker_symbol %> ) -  <%= t.quantity %> Shares @ $<%= t.purchase_price %></li> 
+</ul>
+<% end %>
