@@ -1,7 +1,7 @@
 class DashboardsController < ApplicationController
 
-    def index
-      render
+    def show
+      @trade = Trade.new
     end
 
 

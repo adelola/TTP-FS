@@ -1,1 +1,14 @@
 <h1>Dashboard Show</h1>
+
+<%= form_for @trade do |f| %>
+    
+    <%= f.fields_for :ticker_symbol, @trade.stock do |ff| %>
+        <%= f.label :ticker_symbol %>
+        <%= ff.text_field :ticker_symbol, placeholder: "Ticker", required: true %><br>
+    <%end%>
+  
+    
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity, placeholder: "Quantity", required: true %><br>
+    <%= f.submit "Purchase" %>
+<% end %>
