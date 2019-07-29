@@ -6,7 +6,7 @@ class UsersController < Clearance::UsersController
     end
 
     def user_params
-        params.require(:user).permit(:name, :email, :password)
+        params.require(:user).permit(:name, :cash_balance, :email, :password)
     end
 
 end
