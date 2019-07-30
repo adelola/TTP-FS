@@ -1,4 +1,9 @@
 Rails.application.configure do
+  IEX::Api.configure do |config|
+    config.publishable_token = ENV['IEX_API_PUBLISHABLE_TOKEN']
+    config.endpoint = 'https://cloud.iexapis.com/v1' 
+  end
+
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.cache_classes = false
   config.eager_load = false   # Do not eager load code on boot.

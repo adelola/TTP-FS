@@ -5,13 +5,16 @@ class Stock < ApplicationRecord
     validates :ticker_symbol, presence: true
 
     def self.current_price(ticker_symbol)
-        
-        client = IEX::Api::Client.new(
+        begin
+        @client = IEX::Api::Client.new(
             publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
             endpoint: 'https://cloud.iexapis.com/v1'
           )
-        quote = client.quote(ticker_symbol)
-        quote.latest_price
+        @price = @client.quote(ticker_symbol).latest_price
+        rescue StandardError => e
+            puts "#{e.class}: #{e.message}"
+        
+        end
     end
 
     def self.performance(ticker_symbol)
