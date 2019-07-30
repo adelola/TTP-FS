@@ -1,3 +1,61 @@
 // Place all the styles related to the dashboards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$primary-color: #16324F;
+$secondary-color: #2A628F;
+$accent-color: #7CEA9C;
+
+#dashboard{ 
+
+    a{
+        line-height: 2em;
+        color: $accent-color;
+        font-weight: 600;
+        font-size: 1.5em;
+        text-decoration: underline;
+        }
+
+    .content{
+        min-width: 80vw;
+        min-height: 80vh;
+        background-color: $primary-color;
+        box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.18);
+        color: #eee;
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-around;
+
+
+        .trade_form{
+            align-self: center;
+            line-height: 2em;
+            border: 1px dotted white;
+            padding: 2em;
+
+            input{
+              line-height: 1.5em;
+              font-size: 1.2em;
+            }
+        }
+
+        .portfolio{
+            background-color: #eee;
+            color: #222;
+            margin-top: 3em;
+            padding-left: 1em;
+            width: 50%;
+            min-height: 60%;
+            line-height: 1.5em;
+            font-size: 1.2em;
+            ul {
+                list-style: none;
+            }
+        
+        }
+
+
+    }
+
+}

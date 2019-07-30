@@ -1,27 +1,31 @@
-<%= link_to "Trades", trades_path %>
-<div>
-<h2> Portfolio </h2>
-<% @stocks.each do |ticker,quantity| %>
-<ul>
-  <li> <span style="color: <%= Stock.color(ticker) %>">  <%= ticker %> </span> -  <%= quantity %> Shares - <%= number_to_currency( Stock.aggregate_value(ticker, quantity), :unit => "$") %></li> 
-</ul>
-<% end %>
 
-</div>
+<div id="dashboard">
+    <%= link_to "Transactions", trades_path %>
+    <div class="content">
+        <div class="portfolio">
+            <h2> Portfolio </h2>
+            <% @stocks.each do |ticker,quantity| %>
+            <ul>
+                <li> <span style="color: <%= Stock.color(ticker) %>">  <%= ticker %> </span> -  <%= quantity %> Shares - <%= number_to_currency( Stock.aggregate_value(ticker, quantity), :unit => "$") %></li> 
+            </ul>
+            <% end %>
+        </div>
 
-<div>
-    <h2>Cash - <%= number_to_currency(@balance, :unit => "$") %>  </h2>
+        <div class="trade_form">
+            <h2>Cash - <%= number_to_currency(@balance, :unit => "$") %>  </h2>
 
-    <%= form_for @trade do |f| %>
-        
-        <%= fields_for :stock, @trade.stock do |ff| %>
-            <%= ff.label :ticker_symbol %>
-            <%= ff.text_field :ticker_symbol, placeholder: "Ticker", required: true %><br>
-        <%end%>
-        
-        <%= f.label :quantity %>
-        <%= f.text_field :quantity, placeholder: "Quantity", required: true %><br>
-        <%= f.submit "Purchase" %>
-    <% end %>
+            <%= form_for @trade do |f| %>   
+                <%= fields_for :stock, @trade.stock do |ff| %>
+                    <%= ff.label :ticker_symbol %>
+                    <%= ff.text_field :ticker_symbol, placeholder: "Ticker", required: true %><br>
+                <%end%>
+                
+                <%= f.label :quantity %>
+                <%= f.text_field :quantity, placeholder: "Quantity", required: true %><br>
+                <%= f.submit "Purchase" %>
+            <% end %>
+        </div>
+    </div>
+
 <div>
 
