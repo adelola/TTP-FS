@@ -14,6 +14,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'clearance'
+gem 'dotenv-rails'
+gem 'iex-ruby-client'
 
 
 group :development, :test do
