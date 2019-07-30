@@ -24,6 +24,13 @@ class Stock < ApplicationRecord
           )
         quote = client.quote(ticker_symbol)
         quote.change  
-    end  
+    end
+    
+    def self.aggregate_value(ticker, quantity)
+        current_price = Stock.current_price(ticker).to_f
+        @value = current_price * quantity
+    end
+
+    
 
 end
