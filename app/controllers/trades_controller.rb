@@ -3,7 +3,6 @@ class TradesController < ApplicationController
        @trades= current_user.trades.reverse
     end
     
-    
     def create
         @stock = Stock.find_or_create_by(ticker_symbol: params[:stock][:ticker_symbol])
         @quantity = params[:trade][:quantity].to_i

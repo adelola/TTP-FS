@@ -17,20 +17,30 @@ class Stock < ApplicationRecord
         end
     end
 
-    def self.performance(ticker_symbol)
-        client = IEX::Api::Client.new(
-            publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
-            endpoint: 'https://cloud.iexapis.com/v1'
-          )
-        quote = client.quote(ticker_symbol)
-        quote.change  
+    def self.color(ticker_symbol)
+        begin
+            client = IEX::Api::Client.new(
+                publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
+                endpoint: 'https://cloud.iexapis.com/v1'
+            )
+            performance = client.quote(ticker_symbol).change
+            rescue StandardError => e
+                puts "#{e.class}: #{e.message}"
+        end
+
+        if performance < 0
+            @color = "red"
+        elsif performance == 0 
+            @color= "grey"
+        else
+            @color = "green"
+        end
+        @color
     end
     
     def self.aggregate_value(ticker, quantity)
         current_price = Stock.current_price(ticker).to_f
         @value = current_price * quantity
     end
-
-    
 
 end

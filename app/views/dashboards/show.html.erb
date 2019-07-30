@@ -3,7 +3,7 @@
 <h2> Portfolio </h2>
 <% @stocks.each do |ticker,quantity| %>
 <ul>
-  <li>   <%= ticker %>  -  <%= quantity %> Shares - <%= number_to_currency( Stock.aggregate_value(ticker, quantity), :unit => "$") %></li> 
+  <li> <span style="color: <%= Stock.color(ticker) %>">  <%= ticker %> </span> -  <%= quantity %> Shares - <%= number_to_currency( Stock.aggregate_value(ticker, quantity), :unit => "$") %></li> 
 </ul>
 <% end %>
 
